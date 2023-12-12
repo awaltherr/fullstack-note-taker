@@ -1,5 +1,5 @@
 import "dotenv/config";
-import env from "./utility/validateEnv";
+import env from "./utilities/validateEnv";
 import mongoose from "mongoose";
 import express from "express";
 
