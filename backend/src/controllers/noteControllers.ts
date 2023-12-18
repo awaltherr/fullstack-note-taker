@@ -90,9 +90,15 @@ export const deleteNote: RequestHandler = async (request, response) => {
   const id = request.params.id;
 
   try {
-    const deleteNote = await NoteSchemaModel.findByIdAndUpdate(id).exec();
+    const noteExists = await NoteSchemaModel.findById(id).exec();
+    if (!noteExists) {
+      response.status(400).json({ error: "Note not found" });
+      return;
+    }
 
-    if (!deleteNote) {
+    const deletedNote = await NoteSchemaModel.findByIdAndDelete(id).exec();
+
+    if (!deletedNote) {
       response.status(404).json({ error: "Note not found" });
     } else {
       response.status(200).json({ message: "Deleted note" });

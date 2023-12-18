@@ -17,6 +17,6 @@ expressRouter.post("/", addNote);
 
 expressRouter.patch("/:id", editNote);
 
-expressRouter.patch("/:id", deleteNote);
+expressRouter.delete("/:id", deleteNote);
 
 export default expressRouter;
