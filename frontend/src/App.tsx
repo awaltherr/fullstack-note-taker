@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Note } from "./models/notes";
-import "./App.css";
+import Navbar from "./components/Navbar";
+import "./styles/App.css";
 
 function App() {
   const [notes, setNotes] = useState<Note[]>([]);
@@ -20,7 +21,12 @@ function App() {
     getNotes();
   }, []);
 
-  return <div className="App">{JSON.stringify(notes)}</div>;
+  return (
+    <>
+      <Navbar />
+      <div className="App">{JSON.stringify(notes)}</div>
+    </>
+  );
 }
 
 export default App;
