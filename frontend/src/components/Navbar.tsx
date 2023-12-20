@@ -21,10 +21,7 @@ const Navbar: React.FC = () => {
 
   return (
     <nav>
-      <div
-        className="navbar-container"
-        style={{ height: showDropdown ? "250px" : "90px" }}
-      >
+      <div className="navbar-container">
         <div className="navbar-container-wrapper">
           <div className="left-navbar-container">
             <a href="/">Notes</a>
