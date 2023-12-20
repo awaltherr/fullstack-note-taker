@@ -31,7 +31,7 @@ const Navbar: React.FC = () => {
               <button
                 className="action-icon"
                 onClick={() => {
-                  setShowDropdown((previousState) => !previousState);
+                  setShowDropdown((isOpen) => !isOpen);
                 }}
               >
                 {showDropdown ? "\u2716" : "\u2630"}
