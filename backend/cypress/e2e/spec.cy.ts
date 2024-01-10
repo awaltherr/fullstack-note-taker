@@ -13,6 +13,28 @@ describe("HTTP-Requests", () => {
     });
   });
 
+  it("adds a new note", () => {
+    const newNote = {
+      noteTitle: "New title added by Cypress",
+      noteText: "New text added by Cypress",
+    };
+
+    cy.request("POST", "http://localhost:5000/api/notes", newNote).then(
+      (response) => {
+        expect(response.status).to.equal(201);
+        expect(response.body).to.have.property("noteTitle", newNote.noteTitle);
+        expect(response.body).to.have.property("noteText", newNote.noteText);
+      }
+    );
+  });
+
+  it("reads existing notes", () => {
+    cy.request("GET", "http://localhost:5000/api/notes").then((response) => {
+      expect(response.status).to.equal(200);
+      expect(response.body).to.be.an("array");
+    });
+  });
+
   it("deletes a note", () => {
     expect(currentNotesId).to.not.be.undefined;
 
