@@ -38,6 +38,7 @@ const Navbar: React.FC = () => {
               </button>
             ) : (
               <div className="navbar-links-container">
+                <a href="#">Create Note</a>
                 <a href="#">Login</a>
                 <a href="#">Contact</a>
               </div>
@@ -45,6 +46,7 @@ const Navbar: React.FC = () => {
           </div>
           {showDropdown && (
             <div className="responsive-navbar-container">
+              <a href="#">Create Note</a>
               <a href="#">Login</a>
               <a href="#">Contact</a>
             </div>
