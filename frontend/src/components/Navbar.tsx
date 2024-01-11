@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
+import CreateNoteModal from "./CreateNoteModal";
 import "../styles/Navbar.css";
 import "../styles/App.css";
 
 const Navbar: React.FC = () => {
   const [showBurgerMenu, setShowBurgerMenu] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const burgerMenuVisiblity = () => {
@@ -38,7 +40,9 @@ const Navbar: React.FC = () => {
               </button>
             ) : (
               <div className="navbar-links-container">
-                <a href="#">Create Note</a>
+                <a href="#" onClick={() => setIsModalOpen(true)}>
+                  Create Note
+                </a>
                 <a href="#">Login</a>
                 <a href="#">Contact</a>
               </div>
@@ -53,6 +57,13 @@ const Navbar: React.FC = () => {
           )}
         </div>
       </div>
+      <CreateNoteModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        noteCreation={() => {
+          setIsModalOpen(false);
+        }}
+      />
     </nav>
   );
 };
