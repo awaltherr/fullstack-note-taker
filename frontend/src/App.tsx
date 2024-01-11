@@ -3,6 +3,7 @@ import { Note as NoteModel } from "./models/notes";
 import Navbar from "./components/Navbar";
 import "./styles/App.css";
 import NoteCard from "./components/NoteCard";
+import { fetchNotes } from "./api/note_api";
 
 function App() {
   const [notes, setNotes] = useState<NoteModel[]>([]);
@@ -10,10 +11,7 @@ function App() {
   useEffect(() => {
     async function getNotes() {
       try {
-        const response = await fetch("/api/notes", {
-          method: "GET",
-        });
-        const loadNotes = await response.json();
+        const loadNotes = await fetchNotes();
         setNotes(loadNotes);
       } catch (error) {
         console.error(error);
