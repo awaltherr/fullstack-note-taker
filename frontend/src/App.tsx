@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { Note } from "./models/notes";
+import { Note as NoteModel } from "./models/notes";
 import Navbar from "./components/Navbar";
 import "./styles/App.css";
+import NoteCard from "./components/NoteCard";
 
 function App() {
-  const [notes, setNotes] = useState<Note[]>([]);
+  const [notes, setNotes] = useState<NoteModel[]>([]);
 
   useEffect(() => {
     async function getNotes() {
@@ -24,7 +25,13 @@ function App() {
   return (
     <>
       <Navbar />
-      <div className="App">{JSON.stringify(notes)}</div>
+      <div className="App">
+        <div className="note-card-container">
+          {notes.map((note) => (
+            <NoteCard note={note} key={note._id} />
+          ))}
+        </div>
+      </div>
     </>
   );
 }

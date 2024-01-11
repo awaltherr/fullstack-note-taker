@@ -1,0 +1,33 @@
+.note-card-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.note-card {
+  box-sizing: border-box;
+  margin: 10px;
+  padding: 10px;
+  background-color: #ffffcc;
+  border-radius: 5px;
+  border: 2px solid #f0f0f0;
+  width: calc(25% - 20px);
+  min-width: 200px;
+  max-width: 300px;
+}
+
+.note-title {
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.note-text {
+  font-size: 14px;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .note-card {
+    width: calc(50% - 20px);
+  }
+}
