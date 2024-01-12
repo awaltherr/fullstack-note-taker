@@ -20,7 +20,7 @@ export async function fetchNotes(): Promise<Note[]> {
 
 export interface NoteInput {
   noteTitle: string;
-  noteTextext?: string;
+  noteText?: string;
 }
 
 export async function createNote(note: NoteInput): Promise<Note> {
