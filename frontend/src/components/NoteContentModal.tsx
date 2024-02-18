@@ -24,7 +24,13 @@ const NoteContentModal: React.FC<NoteContentModalProps> = ({
             className="note-modal-content"
             onClick={(e) => e.stopPropagation()}
           >
-            <h3 className="note-modal-title">{title}</h3>
+            <div className="note-modal-header">
+              <h3 className="note-modal-title">{title}</h3>
+              <div className="note-modal-actions">
+                <p className="note-modal-edit">Edit</p>
+                <p className="note-modal-delete">Delete</p>
+              </div>
+            </div>
             <p className="note-modal-text">{text}</p>
             <button onClick={onClose}>Close</button>
           </div>
