@@ -1,10 +1,12 @@
 import { useState } from "react";
 import "../styles/CreateNoteModal.css";
+import { createNote, NoteInput } from "../api/note_api";
+import { Note } from "../models/notes";
 
 interface CreateNoteModalProps {
   isOpen: boolean;
   onClose: () => void;
-  noteCreation: () => void;
+  noteCreation: (newNote: Note) => void;
 }
 
 const CreateNoteModal: React.FC<CreateNoteModalProps> = ({
@@ -14,6 +16,21 @@ const CreateNoteModal: React.FC<CreateNoteModalProps> = ({
 }) => {
   const [addNoteTitle, setAddNoteTitle] = useState("");
   const [addNoteText, setAddNoteText] = useState("");
+
+  const handleCreateNote = async () => {
+    try {
+      const newNoteData: NoteInput = {
+        noteTitle: addNoteTitle,
+        noteText: addNoteText,
+      };
+
+      const newNote = await createNote(newNoteData);
+      noteCreation(newNote);
+      onClose();
+    } catch (error) {
+      console.error("Error appeared creating note:", error);
+    }
+  };
 
   return (
     isOpen && (
@@ -40,7 +57,7 @@ const CreateNoteModal: React.FC<CreateNoteModalProps> = ({
               onChange={(e) => setAddNoteText(e.target.value)}
             />
           </div>
-          <button onClick={noteCreation}>Create</button>
+          <button onClick={handleCreateNote}>Create</button>
         </div>
       </div>
     )
