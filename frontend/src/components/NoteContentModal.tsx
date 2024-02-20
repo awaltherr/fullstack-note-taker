@@ -2,12 +2,14 @@
 
 import React from "react";
 import "../styles/NoteContentModal.css";
+import { deleteNote } from "../api/note_api";
 
 interface NoteContentModalProps {
   isOpen: boolean;
   onClose: () => void;
   title: string;
   text: string;
+  noteId: string;
 }
 
 const NoteContentModal: React.FC<NoteContentModalProps> = ({
@@ -15,7 +17,21 @@ const NoteContentModal: React.FC<NoteContentModalProps> = ({
   onClose,
   title,
   text,
+  noteId,
 }) => {
+  const handleEditNote = () => {
+    console.log("Note edited!");
+  };
+
+  const handleDeleteNote = async () => {
+    try {
+      await deleteNote(noteId);
+      onClose();
+      window.location.reload();
+    } catch {
+      console.log("Note deleted!");
+    }
+  };
   return (
     <>
       {isOpen && (
@@ -27,8 +43,12 @@ const NoteContentModal: React.FC<NoteContentModalProps> = ({
             <div className="note-modal-header">
               <h3 className="note-modal-title">{title}</h3>
               <div className="note-modal-actions">
-                <p className="note-modal-edit">Edit</p>
-                <p className="note-modal-delete">Delete</p>
+                <p onClick={handleEditNote} className="note-modal-edit">
+                  Edit
+                </p>
+                <p onClick={handleDeleteNote} className="note-modal-delete">
+                  Delete
+                </p>
               </div>
             </div>
             <p className="note-modal-text">{text}</p>

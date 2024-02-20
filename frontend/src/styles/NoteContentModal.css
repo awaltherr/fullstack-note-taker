@@ -37,6 +37,11 @@
   cursor: pointer;
 }
 
+.note-modal-edit:hover,
+.note-modal-delete:hover {
+  font-weight: bold;
+}
+
 .note-modal-title {
   font-size: 20px;
   font-weight: bold;

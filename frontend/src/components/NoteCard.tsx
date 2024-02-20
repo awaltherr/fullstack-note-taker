@@ -30,6 +30,7 @@ const NoteCard: React.FC<NoteCardProps> = ({ note }) => {
         onClose={closeModal}
         title={note.noteTitle}
         text={note.noteText}
+        noteId={note._id}
       />
     </>
   );
