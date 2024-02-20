@@ -19,14 +19,16 @@ const CreateNoteModal: React.FC<CreateNoteModalProps> = ({
 
   const handleCreateNote = async () => {
     try {
-      const newNoteData: NoteInput = {
-        noteTitle: addNoteTitle,
-        noteText: addNoteText,
-      };
-
-      const newNote = await createNote(newNoteData);
-      noteCreation(newNote);
-      onClose();
+      if (addNoteTitle.trim() !== "" && addNoteText.trim() !== "") {
+        const newNoteData: NoteInput = {
+          noteTitle: addNoteTitle,
+          noteText: addNoteText,
+        };
+        const newNote = await createNote(newNoteData);
+        noteCreation(newNote);
+        onClose();
+        window.location.reload();
+      }
     } catch (error) {
       console.error("Error appeared creating note:", error);
     }
