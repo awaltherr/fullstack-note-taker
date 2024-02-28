@@ -32,7 +32,7 @@ const NoteContentModal: React.FC<NoteContentModalProps> = ({
     if (!isOpen) {
       setIsNoteEditing(false);
     }
-  });
+  }, [isOpen]);
 
   const handleEditNote = async () => {
     if (isNoteEdiiting) {
