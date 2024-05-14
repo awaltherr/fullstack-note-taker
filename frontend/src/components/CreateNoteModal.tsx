@@ -26,8 +26,8 @@ const CreateNoteModal: React.FC<CreateNoteModalProps> = ({
         };
         const newNote = await createNote(newNoteData);
         noteCreation(newNote);
-        onClose();
         window.location.reload();
+        onClose();
       }
     } catch (error) {
       console.error("Error appeared creating note:", error);

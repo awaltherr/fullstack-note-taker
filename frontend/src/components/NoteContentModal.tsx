@@ -1,5 +1,3 @@
-// Uppdatera NoteContentModal.tsx:
-
 import React, { useEffect, useState } from "react";
 import "../styles/NoteContentModal.css";
 import { deleteNote, editNote } from "../api/note_api";

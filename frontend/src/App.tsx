@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { Note as NoteModel } from "./models/notes";
 import Navbar from "./components/Navbar";
 import "./styles/App.css";
-import NoteCard from "./components/NoteCard";
 import { fetchNotes } from "./api/note_api";
+import NoteList from "./components/NoteList";
 
 function App() {
   const [notes, setNotes] = useState<NoteModel[]>([]);
@@ -24,11 +24,7 @@ function App() {
     <>
       <Navbar />
       <div className="App">
-        <div className="note-card-container">
-          {notes.map((note) => (
-            <NoteCard note={note} key={note._id} />
-          ))}
-        </div>
+        <NoteList notes={notes} />
       </div>
     </>
   );
